@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    
+    background:
+      linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+      url("/static/img/fundo.jpg") no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+  h1 {
+    color: #333;
+    margin: 0 0 10px 0;
+  }
+  
+  button {
+    margin: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  

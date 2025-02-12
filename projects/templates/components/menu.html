@@ -1,0 +1,30 @@
+<!-- Componente: Menu Sanduíche (Hambúrguer) -->
+<div id="menu-icon" onclick="toggleMenu()">&#9776;</div>
+
+<nav id="sidebar">
+  <ul>
+    <li><a href="#">Dog</a></li>
+    <li><a href="#">Cats</a></li>
+    <li><a href="#">random</a></li>
+  </ul>
+</nav>
+
+
+
+<script>
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar');
+      const icon = document.getElementById('menu-icon');
+    
+      // Alterna a classe "active" para abrir/fechar o menu
+      sidebar.classList.toggle('active');
+    
+      // Mudar o ícone entre “hambúrguer” e “X”
+      if (sidebar.classList.contains('active')) {
+        icon.innerHTML = '&times;';  // &times; é o "X"
+      } else {
+        icon.innerHTML = '&#9776;';  // &#9776; é o "hambúrguer"
+      }
+    }
+    </script>
+    

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="color: white;">Dog random</h1>
+
+<!-- Botão estilizado -->
+<div class="container">
+  <a href="#" class="button" id="btn-random-animal">
+    <div class="button__content">
+      <span class="button__text">Clique para ver animal</span>
+      <!-- Reflexos -->
+      <div class="button__reflection-1"></div>
+      <div class="button__reflection-2"></div>
+    </div>
+
+    <!-- Imagens decorativas (formas) -->
+    <img src="https://i.postimg.cc/FKTyC9n0/star.png" alt="" class="button__star-1">
+    <img src="https://i.postimg.cc/FKTyC9n0/star.png" alt="" class="button__star-2">
+    <img src="https://i.postimg.cc/tgqdz1DX/circle.png" alt="" class="button__circle-1">
+    <img src="https://i.postimg.cc/tgqdz1DX/circle.png" alt="" class="button__circle-2">
+    <img src="https://i.postimg.cc/50jwZZZT/diamond.png" alt="" class="button__diamond">
+    <img src="https://i.postimg.cc/cHjQZFWH/triangle.png" alt="" class="button__triangle">
+
+    <!-- Sombra do botão -->
+    <div class="button__shadow"></div>
+  </a>
+</div>
+
+<!-- Script de requisição -->
+<script>
+  // Captura o clique no botão (id="btn-random-animal")
+  document.getElementById('btn-random-animal').addEventListener('click', async (e) => {
+    e.preventDefault(); // Evita que o link (#) navegue ou role a página
+
+    try {
+      const response = await fetch("/random-animal-url");
+      if (!response.ok) {
+        throw new Error("Erro ao obter imagem");
+      }
+      const data = await response.json();
+
+      // CRIA um novo <img> para cada clique
+      const newImg = document.createElement('img');
+      newImg.src = data.url;
+      newImg.style.position = 'absolute';
+      newImg.style.maxWidth = '150px';
+      newImg.style.zIndex = 9998;  // para ficar acima do fundo
+
+      // Calcula coordenadas aleatórias (levemente ajustadas)
+      const x = Math.random() * (window.innerWidth - 170);  
+      const y = Math.random() * (window.innerHeight - 170);
+
+      newImg.style.left = x + 'px';
+      newImg.style.top  = y + 'px';
+
+      // Adiciona a imagem ao <body> (poderia ser em outro container se preferir)
+      document.body.appendChild(newImg);
+
+    } catch (err) {
+      console.error(err);
+      alert("Não foi possível carregar a imagem.");
+    }
+  });
+</script>
+
+{% endblock %}

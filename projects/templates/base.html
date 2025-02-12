@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+
+  <title>{% block title %}Proxy{% endblock %}</title>
+  <!-- CSS do menu -->
+  <link rel="stylesheet" href="/static/css/menu.css">
+  <!-- CSS geral -->
+  <link rel="stylesheet" href="/static/css/style.css">
+  <!-- CSS específico do botão -->
+  <link rel="stylesheet" href="/static/css/button.css">
+</head>
+<body>
+
+  <!-- Menu sanduíche -->
+  <div id="menu-icon" onclick="toggleMenu()">&#9776;</div>
+  <nav id="sidebar">
+    <ul>
+      <li><a href="#">Dogs</a></li>
+      <li><a href="#">Cats</a></li>
+      <li><a href="#">Random</a></li>
+    </ul>
+  </nav>
+
+  <!-- Conteúdo principal -->
+  <div id="content-wrapper">
+    {% block content %}{% endblock %}
+  </div>
+
+  <!-- Script do menu -->
+  <script>
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar');
+      const contentWrapper = document.getElementById('content-wrapper');
+      const menuIcon = document.getElementById('menu-icon');
+
+      sidebar.classList.toggle('active');
+      contentWrapper.classList.toggle('menu-open');
+      menuIcon.innerHTML = sidebar.classList.contains('active') ? '&times;' : '&#9776;';
+    }
+  </script>
+
+
+</body>
+</html>
